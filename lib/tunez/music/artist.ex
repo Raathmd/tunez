@@ -41,7 +41,7 @@ defmodule Tunez.Music.Artist do
     end
 
     defaults [ :destroy]
-    default_accept [:name, :biography]
+    default_accept [:name, :biography, :previous_names]
 
   end
 
