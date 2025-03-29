@@ -152,7 +152,7 @@ def handle_event("validate", %{"form" => form_data}, socket) do
     update(socket, :form, fn form ->
       AshPhoenix.Form.validate(form, form_data)
     end)
-    IO.inspect(socket)
+
   {:noreply, socket}
 end
 # ------------------------------------------------------------------------------
@@ -160,7 +160,6 @@ end
 # ------------------------------------------------------------------------------
 # Context: Implementing the logic to save form data on submit
 def handle_event("save", %{"form" => form_data}, socket) do
-  IO.inspect(form_data, label: "form_data**************")
   case AshPhoenix.Form.submit(socket.assigns.form, params: form_data) do
     {:ok, album} ->
       socket =

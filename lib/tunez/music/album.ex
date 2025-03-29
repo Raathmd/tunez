@@ -85,13 +85,13 @@ identities do
 end
 
 
-    postgres do
-      table "album"
-      repo Tunez.Repo
+postgres do
+  table "album"
+  repo Tunez.Repo
 
-      references do
-        reference :artist, index?: true, on_delete: :delete
-      end
+  references do
+    reference :artist, index?: true, on_delete: :delete
+  end
 
 
 end

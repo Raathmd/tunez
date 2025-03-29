@@ -57,6 +57,7 @@ defmodule TunezWeb.Artists.FormLive do
   end
 
   def handle_event("save", %{"form" => form_data}, socket) do
+    IO.inspect(socket.assigns.form, label: "socket.assigns.form*****************")
     case AshPhoenix.Form.submit(socket.assigns.form, params: form_data) do
       {:ok, artist} ->
         socket =

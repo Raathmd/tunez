@@ -15,6 +15,10 @@ defmodule Tunez.Music.Artist do
       allow_nil? false
     end
 
+    attribute :previous_names, {:array, :string} do
+      default []
+    end
+
     attribute :biography, :string
 
     create_timestamp :inserted_at
@@ -29,7 +33,11 @@ defmodule Tunez.Music.Artist do
       primary? true
     end
     update :update do
-      accept [:name, :biography]
+      require_atomic? false
+      accept [:name, :biography, :previous_names]
+      change Tunez.Music.Changes.UpdatePreviousNames, where: [changing(:name)]
+
+
     end
 
     defaults [ :destroy]
@@ -43,6 +51,8 @@ relationships do
     sort year_released: :desc
   end
 end
+
+
 
 
 end
