@@ -19,7 +19,9 @@ defmodule Tunez.Music.Artist do
       default []
     end
 
-    attribute :biography, :string
+    attribute :biography, :string do
+      allow_nil? false
+    end
 
     create_timestamp :inserted_at
     update_timestamp :updated_at
@@ -29,19 +31,19 @@ defmodule Tunez.Music.Artist do
     create :create do
       accept [:name, :biography]
     end
+
     read :read do
       primary? true
     end
+
     update :update do
       require_atomic? false
-      accept [:name, :biography, :previous_names]
+      accept [:name, :biography]
       change Tunez.Music.Changes.UpdatePreviousNames, where: [changing(:name)]
-
-
     end
 
     defaults [ :destroy]
-    default_accept [:name, :biography, :previous_names]
+    default_accept [:name, :biography]
 
   end
 

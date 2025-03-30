@@ -49,17 +49,6 @@ defmodule Tunez.Music.Album do
       end
     end
 
-    # Context: Defining a validation for the `year_released` attribute
-  validations do
-    validate numericality(:year_released,
-              greater_than: 1950,
-              less_than_or_equal_to: &__MODULE__.next_year/0
-            ),
-            where: [present(:year_released)],
-            message: "must be between 1950 and next year"
-  end
-# ------------------------------------------------------------------------------
-
 # ------------------------------------------------------------------------------
 # Context: One way of defining a `next_year` function for use in the validation
   def next_year, do: Date.utc_today().year + 1

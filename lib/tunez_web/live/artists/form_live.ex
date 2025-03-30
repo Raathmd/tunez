@@ -57,7 +57,6 @@ defmodule TunezWeb.Artists.FormLive do
   end
 
   def handle_event("save", %{"form" => form_data}, socket) do
-
     case AshPhoenix.Form.submit(socket.assigns.form, params: form_data) do
       {:ok, artist} ->
         socket =
@@ -68,6 +67,7 @@ defmodule TunezWeb.Artists.FormLive do
         {:noreply, socket}
 
       {:error, form} ->
+        IO.inspect(socket, label: "socket******************")
         socket =
           socket
           |> put_flash(:error, "Could not save artist data")
