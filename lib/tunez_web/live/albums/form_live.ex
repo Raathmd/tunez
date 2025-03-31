@@ -78,7 +78,7 @@ defmodule TunezWeb.Albums.FormLive do
       phx-change="validate"
       phx-submit="save"
     >
-      <.input type="hidden" field={form[:artist_id]} value={@artist.id}   />
+      <.input class="hidden" field={form[:artist_id]} value={@artist.id}   />
       <.input name="artist_id" value={@artist.name} label="Artist" disabled  />
       <div class="sm:flex gap-8 space-y-8 md:space-y-0">
         <div class="sm:w-3/4"><.input field={form[:name]} label="Name" /></div>
