@@ -1,7 +1,7 @@
 defmodule Tunez.Music.Changes.UpdatePreviousNames do
   use Ash.Resource.Change
 
-  def change(changeset, _context) do
+  def change(changeset, _opts, _context) do
     Ash.Changeset.before_action(changeset, fn changeset ->
     new_name = Ash.Changeset.get_attribute(changeset, :name)
     previous_name = Ash.Changeset.get_data(changeset, :name)
