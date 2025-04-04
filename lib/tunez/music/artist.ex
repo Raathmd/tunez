@@ -47,7 +47,6 @@ defmodule Tunez.Music.Artist do
         constraints allow_empty?: true
         default ""
         filter expr(contains(name, ^arg(:query)))
-
       end
     end
 
