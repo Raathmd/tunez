@@ -46,8 +46,8 @@ defmodule Tunez.Music.Artist do
       argument :query, :ci_string do
         constraints allow_empty?: true
         default ""
-        filter expr(contains(name, ^arg(:query)))
       end
+      filter expr(contains(name, ^arg(:query)))
     end
 
     update :update do
